@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Underscore Demo (Ashish)</title>
+<script src="underscore.js" type="text/javascript"></script>
+<style type="text/css">
+body {
+	font-family: Verdana;
+}
+
+h1.heading {
+	border-bottom: 2px dashed #0000ff;
+	display: inline-block;
+	position: relative;
+	top: -20px;
+	left: 10px;
+}
+
+h2.subheading {
+	color: #0000ff;
+	font-size: 11px;
+	position: relative;
+	top: -35px;
+}
+.timeLeft{
+	background-color:red;
+	color:white;
+}
+</style>
+</head>
+<body>
+	<img src="images/k-logo.png" style="width: 50px" />
+	<h1 class="heading">Underscore Demo</h1>
+	<h2 id="myTime" class="subheading">
+	</h2>
+	<script type="text/javascript" src="timerscript/timer.js"></script>
+	<script type="text/javascript">loadTimer(document.getElementById("myTime"));</script>
+	<script>
+		function clearConsole(){
+			try{
+				console.clear();
+			}catch(err){}
+		}
+		var ms = "This is a sample string";
+		var ma = ms.split("");
+		_.each(ma, function(v, i) {
+			console.log(v + " @ " + i);
+		});
+		
+		var numbers=[1,2,3,4,5];
+		var mappedNumbers=_.map(numbers,function(v){
+			return v*2;
+		});
+		console.log(mappedNumbers);
+		
+		var stud=["ashish","shaju","ramesh"];
+		var studMap=_.map(stud,function(v){ 
+			return v.toUpperCase();
+		})
+		console.log(studMap);
+		clearConsole();
+		
+		var add=function(memo,value){
+			return memo+value;
+		};
+		console.log(_.reduce(numbers,add,40));
+		clearConsole();
+		
+		var testStr="This is a sample string";
+		var reducedStr=_.reduce(testStr,function(memo,c){
+			return memo+c;
+		});
+		console.log(reducedStr);
+		
+		var reducedStr=_.reduceRight(testStr,function(memo,c){
+			return memo+c;
+		});
+		console.log(reducedStr);
+		
+		clearConsole();
+		var x=_.find(numbers,function(v){
+			return v%2==0 && v>2;
+		});
+		console.log(x);
+		
+		var x=_.filter(numbers,function(v){
+			return v%2==0;
+		});
+		console.log(x);
+		clearConsole();
+	</script>
+</body>
+</html>
